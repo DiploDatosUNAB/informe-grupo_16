@@ -1,36 +1,79 @@
 ---
-title: "titulo"
-author: "nombres"
+title: '"TP1_GRUPO16"'
+author: '"Vidal gonzalo"'
+date: "html.document"
 output: html_document
 ---
 
 
+
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-# Cargar los paquetes necesarios acá
+knitr::opts_chunk$set(echo =TRUE)
 ```
+# Cargar los paquetes necesarios acá
+
+library(readr) 
+library(dplyr) 
+datos_todos <- read_csv("datos/vinos.csv")
 
 
-## Introducción
 
+
+library(readr)
+datos <- read_csv(file="/Users/Bangho/Documents/informe-grupo_16/datos_pais.csv")
+
+
+
+##introduccion
+
+Contiene un total de diez varibles, donde se  caracterizan 129971 observaciones, se encuentran varibles cualitativas (pais , nombre, variedad,) y cuantitativas (puntos y precios)  
+La misma hace referencia a la produccion de vino segun precio/puntaje/pais/region .No existen datos del periodo analizado.
 
 
 ## Exploración de los datos
 
 
-```{r}
-# Código para cargar o leer los datos
-```
+library(readr) 
+library(dplyr) 
+datos_todos <- read_csv("datos/vinos.csv")
+
+
+Ver datos de España
+
+datos_pais <- datos_todos |> 
+  filter(pais == "España")
+  
+  
+
+promedio de la veriable precios
 
 
 
-```{r}
-# Cödigo de R acá 
-# Agregá más bloques según sea necesario
-```
+summary(datos_pais,proporcion_media = mean(precio))
 
 
+¿Cuál es su valor medio y desvío estándard?
 
-## Hipótesis
+Mean   : 28.22 
+
+¿Cuál es su rango (valor máximo y valor mínimo)? 
+
+Min.   :  4.00 Max.   :770.00 
+
+¿Hay alguna anomalía que sugiera que hay datos incorrectos? Valores imposibles (como valores negativos en una variable que sólo puede ser positiva) o poco creíbles.
+
+¿Cuántas observaciones hay por cada grupo?
+observaciones 6645
+
+¿Cuántos valores faltantes?
+
+NA's   :72
+
+¿Hay diferencias?
 
 
+HIPOTESIS
+
+El puntaje del vino esta asociado con la variedad?
+el precio del producto no se relaciona con el puntaje ?
+La variedad del vino se relaciona con el precio
