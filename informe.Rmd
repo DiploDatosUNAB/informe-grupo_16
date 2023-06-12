@@ -1,6 +1,6 @@
 ---
-title: "titulo"
-author: "nombres"
+title: "Informe para sumiller"
+author: "vidal Gonzalo"
 output: html_document
 ---
 
@@ -8,29 +8,135 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # Cargar los paquetes necesarios acá
+library(readr)
+library(dplyr)
+library(ggplot2)
+vinos <- read_csv("datos/vinos.csv")
 ```
 
-
 ## Introducción
-
+Los datos analizados corresponden a la publicacion de la revista *winw enthusiast*, con el objetivo de realizar un analis y estudio a partir de los mismos y observando las caracteristicas de los vinos.
 
 
 ## Exploración de los datos
 
 
+
+
 ```{r}
 # Código para cargar o leer los datos
+vinos <- read_csv("datos/vinos.csv",show_col_types = FALSE)
 ```
 
+```{r echo=FALSE}
+head(vinos)
+```
+
+
+#observaciones
+```{r}
+observaciones <- nrow(vinos)
+variables <- ncol(vinos)
+```
+
+# Mostrar cantidad de obsercacioes y variables 
+```
+Los datos "vinos.csv" contienen un total de diez varibles, donde se  caracterizan 129971 observaciones
 
 
 ```{r}
 # Cödigo de R acá 
 # Agregá más bloques según sea necesario
+#variable "puntos"
+#calcular el valor medio y desviacion estandar de la variable "puntos"
+
 ```
 
 
+#valor medio y Desviacion estandar de la variable "precio"
+```
+
+```{r}
+media_precio <- mean (vinos$precio)
+desvio_precio <- sd (vinos$precio)
+```
+
+#valor medio y Desviacion estandar de la variable "precio"
+
+```{r}
+media_puntos <- mean (vinos$puntos)
+desvio_puntos <- sd (vinos$puntos)
+```
+
+¿Cuál es su rango (valor máximo y valor mínimo)?
+
+```{r}
+observaciones <- nrow(vinos)
+
+```
+  
+promedio de la veriable precios y puntos
+
+```{r}
+summary(vinos,proporcion_media = mean(precio))
+
+```
+
 
 ## Hipótesis
+
+
+
+
+"Hipótesis 1: Existe relacion entre la puntuacion del vino y el precio del mismo? Existe una correlación positiva entre la puntuación de un vino y su precio en el mercado. Se espera que los vinos con puntuaciones más altas tengan precios más altos, mientras que los vinos con puntuaciones más bajas tengan precios más bajos.
+
+
+
+```{r}
+ggplot(data = vinos, aes(x = precio,y= puntos)) +
+   geom_point() +
+  labs(x = "precio", y = "puntos") +
+   ggtitle("relacion entre puntuacion y precios de los vinos")
+
+```
+El precio más alto en comparación con los vinos con una calificación más baja. Esto se debe a que los vinos altamente calificados suelen ser considerados de mayor calidad, se puede decir que  aprovechan esta puntuacion o reputacion para establecer precios más altos.
+
+Si bien existe una tendencia general a que los vinos mejor calificados tengan precios más altos, la relación entre la puntuación y el precio puede ser compleja y estar sujeta a varios factores adicionales. La segun los datos suministrados por la revista "Wine Enthusiast",  es importante considerar diferentes aspectos al decidir cuánto estás dispuesto a pagar por un vino en particular.
+
+
+"Hipótesis 2: Existe una relación entre la variedad de uva y el precio de los vinos. En este caso, se espera que las variedades de uva más reconocidas o valoradas tengan precios más altos. existe variedad de la misma uva con precio variable , porque?
+
+
+```{r}
+ggplot(data = vinos, aes(x = variedad,y= precio)) +
+   geom_point() +
+  labs(x = "variedad", y = "precio") +
+   ggtitle("relacion entre variedad y precios de los vinos")
+
+```
+
+El grafico permite ver que para una misma variedad de uva, puede haber una variabilidad en los precios segun la bodega. Algunos de estos factores pueden incluir, Reconocimiento de la bodega: Las bodegas con una reputación alta y reconocida por producir vinos de calidad pueden tener precios más altos para todas sus variedades de uva. El prestigio de la bodega y su historia pueden influir en el precio, independientemente de la variedad de uva utilizada asi mismo el pais de elaboracion son factores que pueden generar variabilidad en los precios de los vinos, incluso dentro de una misma variedad de uva.
+
+
+
+
+hipotesis 3 : que relacion existe entre los países productores de vinos y el precio del vino?.
+Sespera que los vinos procedentes de países con una reputación establecida y reconocida por su calidad, como Francia o Italia, tengan precios más altos en comparación con los vinos de países con menor reconocimiento en la industria.
+
+```{r}
+ggplot(data = vinos, aes(x = pais,y= precio)) +
+   geom_point() +
+  labs(x = "pais", y = "precio") +
+   ggtitle("relacion entre pais y precio de los vinos")
+```
+Existe una relación positiva entre los países productores de vinos y el precio del vino. Esta hipótesis sugiere que la reputación y el prestigio de los países productores de vino influyen en el precio de sus vinos. 
+Como resultado,los vinos procedentes de países que tinene una demanda y un reconocimiento más altos, lo que a su vez puede llevar a precios más altos en el mercado.
+
+
+
+
+
+
+
 
 
